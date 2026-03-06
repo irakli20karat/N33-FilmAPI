@@ -1,0 +1,133 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgb(190, 190, 184);
+}
+
+.title {
+    padding-top: 20px;
+    font-size: 3rem;
+    margin-bottom: 20px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-weight: bold;
+}
+
+.container {
+    width: 60%;
+    margin: 0 auto;
+    background-color: rgb(255, 255, 255);
+    padding: 30px;
+    margin: 10px 0;
+    border-radius: 1px;
+}
+
+.weather-input {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.weather-input>* {
+    padding: 10px;
+}
+
+#cityInput {
+    font-size: 2.2rem;
+}
+
+#getWeatherBtn {
+    height: 100%;
+    max-height: 100%;
+    font-size: 2.2rem;
+    background-color: teal;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+#weatherResult {
+    font-size: 1.3rem;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.default-result {
+    font-weight: bold;
+}
+
+.city-name {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+span {
+    display: flex;
+    justify-content: space-between;
+}
+
+.weather-value {
+    color: teal;
+}
+
+@media (max-width: 1240px) {
+    .container {
+        width: 80%;
+    }
+
+    .title {
+        font-size: 2.5rem;
+    }
+
+    .container {
+        padding: 20px;
+    }
+
+    #cityInput,
+    #getWeatherBtn {
+        font-size: 2rem;
+    }
+}
+
+@media (max-width: 860px) {
+    .container {
+        width: 90%;
+    }
+
+    .title {
+        font-size: 2rem;
+    }
+
+    #cityInput,
+    #getWeatherBtn {
+        font-size: 1.5rem;
+    }
+}
+
+@media (max-width: 600px) {
+    .weather-input {
+        flex-direction: column;
+    }
+
+    .weather-input>* {
+        width: 220px;
+    }
+
+    span {
+        display: flex;
+        flex-direction: column;
+        gap: none;
+    }
+}
