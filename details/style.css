@@ -40,84 +40,16 @@ body {
     border-radius: 1px;
 }
 
-.movie-input {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
-}
-
-.movie-input>* {
-    padding: 10px;
-}
-
-#movieInput {
-    font-size: 2.2rem;
-    background-color: var(--bg-container);
-    color: var(--bg-button);
-    border: none;
-    border-bottom: 3px solid var(--bg-button);
-}
-
-#movieInput::placeholder {
-    color: var(--bg-button);
-}
-
-#movieInput:focus {
-    outline: none;
-}
-
-#getMovieBtn {
-    height: 100%;
-    max-height: 100%;
-    font-size: 2.2rem;
-    font-weight: bold;
-    background-color: var(--bg-button);
-    color: var(--text-button);
-    color: var(--bg-container);
-    border: none;
-    cursor: pointer;
-}
-
-#movieResult {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, 350px);
-    justify-content: center;
-    gap: 20px;
-}
-
-.movie-card {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 10px;
-    padding: 25px 70px;
-    background-color: var(--bg-card);
-}
-
 .movie-poster {
     width: 500px;
+    margin-left: 15px;
     height: auto;
-}
-
-.movie-info {
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-    color: var(--text-card);
-    padding-block: 10px;
 }
 
 .default-result {
     font-weight: bold;
     color: var(--text-card);
     text-align: center;
-}
-
-span {
-    display: flex;
-    justify-content: space-between;
 }
 
 .head-information {
@@ -140,6 +72,8 @@ span {
     display: flex;
     flex-direction: column;
     gap: 10px;
+    padding: 20px;
+    background-color: var(--bg-body);
 }
 
 @media (max-width: 1240px) {
@@ -148,16 +82,11 @@ span {
     }
 
     .title {
-        font-size: 2.5rem;
+        font-size: 2rem;
     }
 
     .container {
         padding: 20px;
-    }
-
-    #movieInput,
-    #getMovieBtn {
-        font-size: 2rem;
     }
 }
 
@@ -166,28 +95,13 @@ span {
         width: 90%;
     }
 
-    .title {
-        font-size: 2rem;
-    }
-
-    #movieInput,
-    #getMovieBtn {
-        font-size: 1.5rem;
-    }
-}
-
-@media (max-width: 600px) {
-    .movie-input {
+    .head-information {
         flex-direction: column;
+        gap: 10px;
     }
 
-    .movie-input>* {
-        width: 220px;
-    }
-
-    span {
-        display: flex;
-        flex-direction: column;
-        gap: none;
+    .movie-poster {
+        max-width: 90%;
+        height: auto;
     }
 }
