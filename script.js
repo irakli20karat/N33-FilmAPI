@@ -1,47 +1,56 @@
-const KEY = "be797c56ef68dc3752e5b7759848ae19";
-const API_URL = "https://api.openweathermap.org/data/2.5/weather?q=";
+const KEY = "29f6fc7b";
+const API_URL = "http://www.omdbapi.com/";
 
-const cityInput = document.getElementById("cityInput");
-const getWeatherBtn = document.getElementById("getWeatherBtn");
-const weatherResult = document.getElementById("weatherResult");
+const movieInput = document.getElementById("movieInput");
+const getMovieBtn = document.getElementById("getMovieBtn");
+const movieResult = document.getElementById("movieResult");
 
-const fetchWeather = async (city) => {
+const fetchMovie = async (movie) => {
     try {
-        const response = await fetch(`${API_URL}${city}&appid=${KEY}&units=metric`);
+        const response = await fetch(`${API_URL}?s=${movie}&apikey=${KEY}`);
         if (!response.ok) {
             throw new Error("Error!");
         }
         const data = await response.json();
-        displayWeather(data);
+        displayMovie(data);
     } catch (error) {
-        weatherResult.innerHTML = `<p class="error-result">${error.message}</p>`;
+        movieResult.innerHTML = `<p class="error-result">${error.message}</p>`;
     }
 }
 
-const displayWeather = (data) => {
-    const { name, main, wind, weather } = data;
-    weatherResult.innerHTML = `
-        <p class="city-name">${name}</p>
-        <span><p class="weather-label">Current Weather: </p><p class="weather-value">${weather[0].description}</p></span>
-        <span><p class="weather-label">Temperature: </p><p class="weather-value">${main.temp} °C</p></span>
-        <span><p class="weather-label">Feels Like: </p><p class="weather-value">${main.feels_like} °C</p></span>
-        <span><p class="weather-label">Wind Speed: </p><p class="weather-value">${wind.speed} m/s</p></span>
-        <span><p class="weather-label">Humidity: </p><p class="weather-value">${main.humidity}%</p></span>
-    `;
+const displayMovie = (data) => {
+    if (data.Response === "False") {
+        movieResult.innerHTML = `<p class="error-result">${data.Error}</p>`;
+        return;
+    }
+    movieResult.innerHTML = "";
+    data.Search.forEach(e => {
+        const movieCard = document.createElement("div");
+        movieCard.classList.add("movie-card");
+        movieCard.innerHTML = `
+            <img src="${e.Poster}" onerror="this.src='placeholder_poster.png';" alt="${e.Title} Poster" class="movie-poster">
+            <div class="movie-info">
+                <h3>${e.Title}</h3>
+                <p>Year: ${e.Year}</p>
+                <p>Type: ${e.Type}</p>
+            </div>
+        `;
+        movieResult.appendChild(movieCard);
+    });
 }
 
-getWeatherBtn.addEventListener("click", () => {
-    const city = cityInput.value.trim();
-    if (city) {
-        weatherResult.innerHTML = `
+getMovieBtn.addEventListener("click", () => {
+    const movie = movieInput.value.trim();
+    if (movie) {
+        movieResult.innerHTML = `
         <p class="default-result">
-            Loading weather information for <strong>${city}</strong>...
+            Loading movie information for <strong>${movie}</strong>...
         </p>`;
-        fetchWeather(city);
+        fetchMovie(movie);
     } else {
-        weatherResult.innerHTML = `
+        movieResult.innerHTML = `
         <p class="default-result">
-            Please enter a city name and click "Get Weather" to see the current weather information.
+            Please enter a movie name and click "Get Movie" to see all the available movie information.
         </p>`;
     }
 });
