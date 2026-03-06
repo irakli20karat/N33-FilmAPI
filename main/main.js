@@ -27,8 +27,12 @@ const displayMovie = (data) => {
     data.Search.forEach(e => {
         const movieCard = document.createElement("div");
         movieCard.classList.add("movie-card");
+        movieCard.addEventListener("click", () => {
+            window.location.href = `../details/details.html?imdbID=${e.imdbID}`;
+        });
+
         movieCard.innerHTML = `
-            <img src="${e.Poster}" onerror="this.src='placeholder_poster.png';" alt="${e.Title} Poster" class="movie-poster">
+            <img src="${e.Poster}" onerror="this.src='../placeholder_poster.png';" alt="${e.Title} Poster" class="movie-poster">
             <div class="movie-info">
                 <h3>${e.Title}</h3>
                 <p>Year: ${e.Year}</p>
