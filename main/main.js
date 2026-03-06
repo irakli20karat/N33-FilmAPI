@@ -28,7 +28,7 @@ const displayMovie = (data) => {
         const movieCard = document.createElement("div");
         movieCard.classList.add("movie-card");
         movieCard.addEventListener("click", () => {
-            window.location.href = `../details/details.html?imdbID=${e.imdbID}`;
+            window.location.href = `./details/details.html?imdbID=${e.imdbID}`;
         });
 
         movieCard.innerHTML = `
