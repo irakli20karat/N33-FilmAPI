@@ -1,5 +1,5 @@
 const KEY = "29f6fc7b";
-const API_URL = "http://www.omdbapi.com/";
+const API_URL = "https://www.omdbapi.com/";
 
 const movieInput = document.getElementById("movieInput");
 const getMovieBtn = document.getElementById("getMovieBtn");
